@@ -1,14 +1,662 @@
-#24- lombta
+#39-dars Tashqi kutibxona
+# import requests
 
-from math import sqrt #sqrt - kvadrat ildiz
-sonlar = list(range(11))#0 dan 10 gacha sonlar ro'yhat
-ildizlar =list(map(sqrt,sonlar))#map bu ildiz
+# from bs4 import BeautifulSoup
+# from wordcloud import WordCloud
+# import matplotlib.pyplot as plt
+
+
+# sahifa = "https://kun.uz/news/main"
+# r = requests.get(sahifa)
+
+# soup = BeautifulSoup(r.text, 'html.parser')
+# news = soup.find_all(class_="news-title")
+# matn=""
+# for n in news:
+#     matn += n.text
+
+# # kerakmas so'zlar
+# stopwords = ["учун","бўйича","лекин","билан","ва","бор","ҳам","хил","йил"]
+# # bulutni yaratamiz
+# wordcloud = WordCloud(width = 1000, height = 1000,
+#                 background_color ='white',
+#                 stopwords = stopwords,
+#                 min_font_size = 20).generate(matn)
+
+# # plot the WordCloud image
+# plt.figure(figsize = (8, 8), facecolor = None)
+# plt.imshow(wordcloud)
+# plt.axis("off")
+# plt.tight_layout(pad = 0)
+# plt.show()
+
+
+
+# from googletrans import Translator
+# tarjimon = Translator()
+# msg="Tarjima uchun so'z kiriting (chiqib ketish uchun \"t\" deb yozing):"
+# while True:
+#     text = input(msg)
+#     if text == "t":
+#         break
+#     else:
+#      tarjima = tarjimon.translate(text, src='uz', dest='en')
+#      print(tarjima.text)
+
+
+# from googletrans import Translator
+# tarjimon = Translator() # Translator bu maxsus klass (tarjimon esa obyekt)
+# matn_uz = "Python - unyodagi eng mashxur dasturlash tili" #bunaqa deb ham bo'ladi  #input(f"istalgan matin kiriting : ")
+# tarjima = tarjimon.translate(matn_uz)
+# print(tarjima.origin)
+# print(tarjima.text)
+# print(tarjima.src)
+
+
+#38-dars ichgaridagi kutubxonalar
+
+# import re
+# word1="anvar"
+# word2="ahmar"
+# word3="abduloh"
+# andoza="^a...r$"
+
+# print(re.match(andoza,word1))
+# print(re.match(andoza,word2))
+# print(re.match(andoza,word3))
+
+# import datetime as dt
+# hozir=dt.datetime.now()
+# futbol=dt.datetime(2026,1,5,23,45,00)
+# farq=futbol-hozir
+# sekundlar =farq.seconds
+# minutlar=int(sekundlar/60)
+# soatlar=int(minutlar/60)
+# print(f"Futbol boshlanishiga {farq.days} kunu {soatlar} soat qoldi")
+
+
+# bugun=dt.date.today()
+# ramazon=dt.date(2026,2,17)
+# farq = ramazon-bugun
+# print(f"Ramazon {farq.days} kun qoldi")
+
+
+# hozir=dt.datetime.now()
+# print(hozir)
+# print(hozir.date())
+# print(hozir.time())
+
+# bugun=dt.date.today()
+# print(f"bugungi sana: {bugun}")
+# ertaga=dt.date(2026,1,5)
+# print(f"ertaga sana: {ertaga}")
+
+#37-das class test
+
+# import unittest
+# from main import Car
+
+# class CarTest(unittest.TestCase):
+#     """Car klassini tekshirish uchun test"""
+#     def setUp(self):#setUp BU OLDINDAN QIYMAT BERSA BO'LADI
+#         make = "GM"
+#         model = "Malibu"
+#         year = 2020
+#         self.price = 40000
+#         self.km = 10000
+#         self.avto1 = Car(make,model,year)
+#         self.avto2 = Car(make,model,year,price=self.price)
+
+#     def test_create(self):
+#         # Qiymatlar mavjudligini assertIsNotNone metodi bilan tekshiramiz
+#         self.assertIsNotNone(self.avto1.make)
+#         self.assertIsNotNone(self.avto1.model)
+#         self.assertIsNotNone(self.avto1.year)
+#         # Qiymat mavjud emasligini assertIsNone metodi bilan tekshiramiz
+#         self.assertIsNone(self.avto1.price)
+#         # Qiymat tengligini assertEquals metodi bilan tekshiramiz
+#         self.assertEqual(0,self.avto1.get_km())
+#         # avto2 narhini tekshiramiz
+#         self.assertEqual(self.price,self.avto2.price)
+
+#     def test_set_price(self):
+#         new_price = 45000
+#         self.avto2.set_price(new_price)  # yangi narh belgilash uchun
+#         self.assertEqual(new_price, self.avto2.price)  # tengmi yo'mi tekshiradi
+
+#     def test_add_km(self):
+#         # avto1 km should start at 0
+#         self.assertEqual(0, self.avto1.get_km())
+#         self.avto1.add_km(5000)
+#         self.assertEqual(5000, self.avto1.get_km())
+
+#         # adding negative km should raise ValueError
+#         with self.assertRaises(ValueError):
+#             self.avto1.add_km(-5000)
+
+
+#     def test_info(self):
+#         self.assertIsNotNone(0,self.avto1.get_km())
+#         self.assertIsNotNone(self.avto1.get_info())#info malumotni chiqarvoti!
+#         self.assertIsNotNone(self.avto2.get_info())
+
+
+# unittest.main()
+
+
+
+#36-dars
+
+# import unittest
+# from main import get_full_name
+
+# class NameTest(unittest.TestCase):
+#     def test_toliq_ism(self):
+#         formatted_name = get_full_name('alijon','valiyev')
+#         self.assertEqual(formatted_name, 'Alijon Valiyev')
+
+#     def test_toliq_ism_name(self):
+#         formatted_name = get_full_name('hasan','husanov','olimovich')
+#         self.assertEqual(formatted_name, 'Hasan Olimovich Husanov')
+
+# if __name__ == '__main__':
+#     unittest.main()
+
+
+#35-dars try-except-else
+
+
+# mevalar = ['olma','anor','anjir','uzum']
+# try:
+#   print(mevalar[0])
+# except IndexError:
+#   print(f"Ro'xatda {len(mevalar)} ta meva bor xolos")
+
+
+
+# yosh = input("Yoshingizni kiriting: ")
+# try:
+#   yosh=int(yosh)
+# except ValueError:
+#   print("Butun son kiritmadinigiz")
+# else:
+#   print(f"Siz {2026-yosh} yilda tug'ilgansiz")
+
+
+# 34-dars JSON
+
+
+
+# import json
+
+# x = 10
+# x_json = json.dumps(x)
+
+# ism = "anvar"
+# ism_json = json.dumps(ism)
+
+# sonlar = [12, 45, 23, 67]
+# sonlar_json = json.dumps(sonlar)
+
+# Afto_server = {
+#   "ism": "Alijon Valiyev",
+#   "yosh": 30,
+#   "mijoz_lar": True,
+#   "Mijozlar": ("Ahmad","Bonu"),
+#   "Sotiboladiganlar": None,
+#   "moshinalar": [
+#     {"Model": "Malibu", "Rang": "ko'k"},
+#     {"yil": 2023, "narh": 400000}
+#   ]
+# }
+
+# afto_json = json.dumps(Afto_server)
+
+# Afto_json = json.dumps(Afto_server, indent=4)
+# print(Afto_json)
+
+
+
+#33-dars
+# with open('app.dart') as file: #bunda qaytgan abektni olib file nomidagi qutiga solib
+#     pi=file.read() #bunda shuqutini o'qidi
+#     print(pi) #consolga chiqarishchun qutini!
+
+
+
+
+
+
+# 32-dars Dander metotlari
+
+# class Avto:
+    # __num_avto = 0
+    # """Avtomobil klassi"""
+    # def __init__(self,make,model,rang,yil,narh):
+        # """Avtomobilning xususiyatlari"""
+        # self.make = make
+        # self.model = model
+        # self.rang = rang
+        # self.yil = yil
+        # self.narh = narh
+        # Avto.__num_avto += 1
+#
+    # @classmethod
+    # def get_num_avto(cls):
+        # return cls.__num_avto
+#
+    # def __str__(self):
+        # """Obyekt haqida ma'lumot"""
+        # return f"Avto: {self.make} {self.model}. {self.narh}$"
+#
+    # def __repr__(self):
+        # """Obyekt haqida ma'lumot"""
+        # return f"Avto: {self.make} {self.model}. {self.narh}$"
+#
+    # def __eq__(self,boshqa_avto):
+        # return self.narh == boshqa_avto.narh
+#
+    # def __lt__(self,boshqa_avto):
+        # return self.narh<boshqa_avto.narh
+#
+    # def __le__(self,boshqa_avto):
+        # return self.narh<=boshqa_avto.narh
+#
+    # def get_info(self):
+        # return f"{self.rang} {self.make} {self.model}.{self.yil}-yil. Narhi:{self.narh}$"
+#
+# class AvtoSalon:
+    # """Avtosalon klassi"""
+    # def __init__(self,name):
+        # self.name = name
+        # self.avtolar = []
+#
+    # def __repr__(self):
+        # return f"{self.name} avtosaloni"
+#
+    # def __len__(self):
+        # return len(self.avtolar)
+#
+    # def __getitem__(self,index):
+        # return self.avtolar[index]
+#
+    # def __setitem__(self,index,value):
+        # if isinstance(value,Avto):
+            # self.avtolar[index]=value
+#
+    # def __add__(self,qiymat):
+        # if isinstance(qiymat,AvtoSalon):
+            # yangi_salon =  AvtoSalon(f"{self.name} {qiymat.name}")
+            # yangi_salon.avtolar = self.avtolar + qiymat.avtolar
+            # return yangi_salon
+        # elif isinstance(qiymat,Avto):
+            # self.add_avto(qiymat)
+        # else:
+            # print(f"AvtoSalon ga {type(qiymat)} qo`shib bo`lmaydi")
+#
+    # def __call__(self,*param):
+        # if param:
+            # for avto in param:
+                # self.add_avto(avto)
+        # else:
+            # return [avto for avto in self.avtolar]
+#
+    # def add_avto(self,*qiymat):
+        # for avto in qiymat:
+            # if isinstance(avto,Avto):
+                # self.avtolar.append(avto)
+            # else:
+                # print("Avto obyketini kiriting")
+#
+    # def get_list(self):
+        # return [avto for avto in self.avtolar]
+
+
+
+# avto1 = Avto("GM","Malibu","Qora",2020,40000)
+# avto2 = Avto("GM","Lacetti","Oq",2020,20000)
+# avto3 = Avto("Toyota",'Carolla',"Silver",2018, 45000)
+# avto4 = Avto("Mazda", "6", 'Qizil',2015,35000)
+# avto5 = Avto("Volkswagen","Polo",'Qora',2015,30000)
+# avto6 = Avto("Honda","Accord","Oq",2017,42000)
+
+# salon1 = AvtoSalon("MaxAvto")
+# salon1(avto1,avto2,avto3)
+# print(salon1())
+#
+# salon2 = AvtoSalon("Avto Lider")
+# salon2(avto4,avto5,avto6)
+# print(salon2())
+#
+# print(len(salon1))
+# print(avto1<avto2)
+#
+#31-DARS Inkapsulyatsiya
+
+
+# from uuid import uuid4
+# class Avto:
+#     """Avtomobil klassi"""
+#     __num_avto = 0
+#     def __init__(self,make,model,rang,yil,narh,km=0):
+#         """Avtomobilning xususiyatlari"""
+#         self.make = make
+#         self.model = model
+#         self.rang = rang
+#         self.yil = yil
+#         self.narh = narh
+#         self.__km = km
+#         self.__id = uuid4()
+#         Avto.__num_avto += 1
+
+#     @classmethod
+#     def get_num_avto(cls):
+#         return cls.__num_avto
+
+
+#     def __repr__(self):
+#       return f"Avto:{self.make} {self.model}"
+# avto1 = Avto("GM","Malibu","Qora",2020,40000)
+# print(avto1)
+# avto2 = Avto("GM","Lacetti","Oq",2020,20000)
+# avto3 = Avto("Toyota",'Carolla',"Silver",2018, 45000)
+# print(Avto.get_num_avto())
+# print(dir(Avto))
+
+# from uuid import uuid4
+# class Avto:
+#   def __init__(self,make,model,rang,yil,narh,km=0):
+#     self.make=make
+#     self.module=model
+#     self.rang=rang
+#     self.yil=yil
+#     self.narh=narh
+#     self.__km=km
+#     self.__id=uuid4()
+# def get_km(self):
+#   return self.__km
+# def get_id(self):
+#   return self.__id
+
+
+
+
+#30-dars
+# class Shaxs:
+    # """Shaxslar haqida ma'lumot"""
+    #  def __init__(self,ism,familiya,passport,tyil):
+        # self.ism = ism
+        # self.familiya = familiya
+        # self.passport = passport
+        # self.tyil = tyil
+#
+    # def get_info(self):
+        # """Shaxs haqida ma'lumot"""
+        # info = f"{self.ism} {self.familiya}. "
+        # # # info += f"Passport:{self.passport}, {self.tyil}-yilda tug`ilgan"
+        # return info
+#
+    # def get_age(self,yil):
+        # """Shaxsning yoshini qaytaruvchi metod"""
+        # return yil - self.tyil
+
+
+# inson = Shaxs("Hasan","Alimov","FB001122",2010)
+# print(f"{inson.get_info()}. {inson.get_age(2025)} yoshda.")
+
+# class Talaba(Shaxs):
+    # def __init__(self,ism,familiya,passport,idraqam):
+        # super().__init__(ism,familiya,passport,idraqam)
+        # self.idraqam = idraqam
+        # self.bosqich =1
+    # def get_id(self):
+        # return self.idraqam
+    # def get_bosqich(self):
+        # return self.bosqich
+    # talaba1=Talaba("Alijon","valiyiv""FR0001000","tyil")
+    # print(f"{talaba1.info}")
+#
+#29-dars objekt metodlari
+
+# class Avto:
+#     """Docstring for Avto"""
+#     def __init__(self,model,yil):
+#         self.model=model
+#         self.yil=yil
+#         self.yurgan=0
+#     def get_info(self):
+#         return f"{self.model} yili-{self.yil}. {self.yurgan}-shuncha yurgan!"
+# avto1=Avto("Malibu",2025)
+# print(avto1.get_info())
+
+
+
+
+# class Talaba:
+#     """Talaba nomli klass yaratamiz"""
+#     def __init__(self,ism,familiya,tyil):
+#         """Talabaning xususiyatlari"""
+#         self.ism = ism
+#         self.familiya = familiya
+#         self.tyil = tyil
+#         self.bosqich = 1
+
+#     def get_info(self):
+#         """Talaba haqida ma'lumot"""
+#         return f"{self.ism} {self.familiya}. {self.bosqich}-bosqich talabasi "
+
+#     def set_bosqich(self,bosqich):
+#         """Talabaning kursini yangilovchi metod"""
+#         self.bosqich = bosqich
+
+#     def update_bosqich(self):
+#         """Talabanining bosqichini 1taga ko'paytirish"""
+#         self.bosqich += 1
+# talaba1 = Talaba("Alijon","Valiyev",2000)
+
+# talaba1.update_bosqich() # 1 bosqichga oshiramiz
+# # print(talaba1.get_info())
+# class Fan():
+#     def __init__(self,nomi):
+#         self.nomi = nomi
+#         self.talabalar_soni = 0
+#         self.talabalar = []
+
+#     def add_student(self,talaba):
+#         """Fanga talabalar qo'shish"""
+#         self.talabalar.append(talaba)
+#         self.talabalar_soni += 1
+
+#     def get_students(self):
+#         return [talaba.get_info() for talaba in self.talabalar]
+# matematika = Fan("Oliy Matematika")
+# talaba1 = Talaba("Alijon","Valiyev",2000)
+# talaba2 = Talaba("Hasan","Alimov",2001)
+# talaba3 = Talaba("Akrom","Boriyev",2001)
+
+# matematika.add_student(talaba1)
+# matematika.add_student(talaba2)
+# matematika.add_student(talaba3)
+# # print(matematika.talabalar)
+# # mat_talabalar = matematika.get_students()
+# # print(mat_talabalar)
+
+# def see_methods(klass):
+#     return [method for method in dir(klass) if method.startswith('__') is False]
+
+# print(see_methods(Talaba))
+# print(talaba1.__dict__)
+
+
+
+
+#28-dars oop
+# class Talaba:
+    # """Talaba nomli klass yaratamiz"""
+    # def __init__(self,ism,familiya,tyil):
+        # """Talabaning xususiyatlari"""
+        # self.ism = ism
+        # self.familiya = familiya
+        # self.tyil = tyil
+#
+    # def get_name(self):
+        # """Talabaning ismini qaytaradi"""
+        # return self.ism
+#
+    # def get_lastname(self):
+        # """Talabaning familiyasini qaytaradi"""
+        # return self.familiya
+#
+    # def get_fullname(self):
+        # """Talabaning ism-familiyasini qaytaradi"""
+        # return f"{self.ism} {self.familiya}"
+#
+    # def get_age(self,yil):
+        # """Talabaning yoshini qaytaradi"""
+        # return yil-self.tyil
+#
+    # def tanishtir(self):
+        # print(f"Ismim {self.ism} {self.familiya}. {self.tyil} yilda tu'gilganman")
+#
+# talaba1 = Talaba("MUHAMMAD","SAID",2010)
+# print(talaba1.get_age(2025))
+# print(talaba1.get_fullname())
+#
+#25-liha son topish o'yini.
+
+
+# parol = "1707"
+# user_input = int(input("Parolni kiriting: "))
+# while user_input != parol:
+#      print("Parol noto'g'ri")
+#      user_input = input(" Yana parolni kiriting: ")
+# print("Kirish ruxsat etildi keling bila o'yin o'ynimiz")
+
+# import random
+
+# # 1️⃣ Kompyuter son o‘ylaydi, foydalanuvchi topadi
+# def computer_thinks_user_guesses(x=10):
+#     yashirin_son = random.randint(0, x)
+#     urinishlar = 0
+
+#     while True:
+#         taxmin = int(input(f"0 dan {x}gacha son kiriting: "))
+#         urinishlar += 1
+
+#         if taxmin < yashirin_son:
+#             print("Katta son kiriting")
+#         elif taxmin > yashirin_son:
+#             print("Kichik son kiriting")
+#         else:
+#             print(f"✅ Siz topdingiz! {urinishlar} ta urinishda")
+#             return urinishlar
+
+
+# # 2️⃣ Foydalanuvchi son o‘ylaydi, kompyuter topadi
+# def user_thinks_computer_guesses(x=10):
+#     print(f"0 dan {x} gacha son o‘ylang (ichingizda)")
+#     input("Tayyor bo‘lsangiz Enter bosing...")
+
+#     past = 0
+#     yuqori = 10
+#     urinishlar = 0
+
+#     while True:
+#         taxmin = (past + yuqori)//2
+#         urinishlar += 1
+
+#         javob = input(f"Siz o‘ylagan son {taxmin} mi? (+, -, t) :")
+
+#         if javob == "+":
+#             past = taxmin + 1
+#         elif javob == "-":
+#             yuqori = taxmin - 1
+#         elif javob == "t":
+#             print(f"🤖 Kompyuter topdi! {urinishlar} ta urinishda")
+#             return urinishlar
+
+
+# # 3️⃣ O‘yinni boshlash va g‘olibni aniqlash
+# user_urinish = computer_thinks_user_guesses()
+# computer_urinish = user_thinks_computer_guesses()
+
+# print("\n📊 NATIJA:")
+# print(f"Siz: {user_urinish} ta urinish")
+# print(f"Kompyuter: {computer_urinish} ta urinish")
+
+# if user_urinish < computer_urinish:
+#     print("🏆 SIZ YUTDINGIZ!")
+# elif user_urinish > computer_urinish:
+#     print("🤖 KOMPYUTER YUTDI!")
+# else:
+#     print("🤝 DURRANG!")
+
+
+# import random as r
+# urinish=0
+# def son_top(x):
+#  print("Keling o'ylagan sonni topish o'ynaymiz!")
+# while True:
+#     x=r.randint(0,10)
+#     sonlar=int(input("1 dan 10 gacha son o'yladim Topa olasizmi??:\n>>>"))
+#     if sonlar==x:
+#       urinish+=1
+#       print(f"To'g'ri topdingiz{urinish}-shuncha urinishda")
+#     elif sonlar>=x:
+#     #   urinish+=1
+#       print(f"bu sondan kata")
+#     elif sonlar>=x:
+#       print(f"bu sondan kichkina")
+# else:
+#  yana=input(f"yana o'ynaymizmi?(ha/yo'q)")
+
+
+
+#24- lombda
+
+# sozlar = ["salom", "hello", "java", "python"]
+# natija = list(filter(lambda s: "h" in s, sozlar))
+# print(natija)
+
+
+# sozlar = ["olma", "banan", "choy", "shokolad"]
+
+# natija = list(filter(lambda s: len(s) > 4, sozlar))
+# print(natija)
+
+# import random as r
+# sonlar =r.sample(range(100),10)#range bu 0-99 oralig' sonlarni o'ntaasini ekranga chiqaradi random bo'lgani uchun 10 harhil qiymat tallaydi
+# print(sonlar)
+# def juftmi(x):
+#     """x juft bo'lsa True ,aks holda False qaytaruchi funksiya"""
+#     return x%2==0
+# juft_sonlar = list(filter(juftmi,sonlar))
+# print(juft_sonlar)#bunda 10ta lubo'y qiymatan faqat juftni olib consolga chiqaradi
+
+
+
+
+# from math import sqrt #sqrt - kvadrat ildiz
+# sonlar = list(range(11))#0 dan 10 gacha sonlar ro'yhat
+# ildizlar =list(map(sqrt,sonlar))#map bu ildiz
 # print(ildizlar)
 
-def daraja2(x):
-  """Berilgan sonning kvadratini qaytaruvchi funksiya"""
-  return x*x
-print(list(map(daraja2,sonlar)))
+# kvadratlar = list(map(lambda x:x*x,sonlar))#bunda lambda funksyasi ishlavoti cod kam yoziladi bumda lambda
+# print(kvadratlar)
+
+
+#yana lambda kunksauchun :
+# a=[4,5,6]
+# b=[7,8,9]
+# a_plus_b = list(map(lambda x,y:x+y,a,b))
+# print(a_plus_b)
+
+
+
+# def daraja2(x):
+#   """Berilgan sonning kvadratini qaytaruvchi funksiya"""
+#   return x*x
+# print(list(map(daraja2,sonlar)))
 
 # import math
 
