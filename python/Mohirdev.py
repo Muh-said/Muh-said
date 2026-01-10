@@ -65,7 +65,7 @@
 # print(re.match(andoza,word2))
 # print(re.match(andoza,word3))
 
-# import datetime as dt
+import datetime as dt
 # hozir=dt.datetime.now()
 # futbol=dt.datetime(2026,1,5,23,45,00)
 # farq=futbol-hozir
@@ -75,10 +75,10 @@
 # print(f"Futbol boshlanishiga {farq.days} kunu {soatlar} soat qoldi")
 
 
-# bugun=dt.date.today()
-# ramazon=dt.date(2026,2,17)
-# farq = ramazon-bugun
-# print(f"Ramazon {farq.days} kun qoldi")
+bugun=dt.date.today()
+ramazon=dt.date(2026,2,17)
+farq = ramazon-bugun
+print(f"Ramazon {farq.days} kun qoldi")
 
 
 # hozir=dt.datetime.now()

@@ -8,19 +8,17 @@ bot = telebot.TeleBot(TOKEN)
 
 translator = Translator()
 
-# foydalanuvchi tanlagan til
+# foydalanuvchi tanlagan tilni saqlash
 user_lang = {}
 
-# ====== TIL TUGMALARI (UZ → ENG → RUS → KIRIL-LOTIN) ======
+# ====== TIL TUGMALARI ======
 def til_keyboard():
     kb = ReplyKeyboardMarkup(resize_keyboard=True)
-    kb.row(
+    kb.add(
         KeyboardButton("🇺🇿 Uzbek"),
         KeyboardButton("🇬🇧 English"),
-        KeyboardButton("🇷🇺 Русский")
-    )
-    kb.row(
-        KeyboardButton("🔤 Кирилл → Lotin")
+        KeyboardButton("🇷🇺 Русский"),
+        KeyboardButton("🔤 Lotin → Кирилл")
     )
     return kb
 
@@ -36,28 +34,23 @@ def start(message):
 # ====== TIL TANLASH ======
 @bot.message_handler(func=lambda msg: msg.text in [
     "🇺🇿 Uzbek",
-    "🇬🇧 English",
+     "🇬🇧 English",
     "🇷🇺 Русский",
-    "🔤 Кирилл → Lotin"
+   "🔤 Lotin → Кирилл"
 ])
 def choose_lang(message):
     chat_id = message.chat.id
 
     if message.text == "🇺🇿 Uzbek":
         user_lang[chat_id] = "uz"
-
-    elif message.text == "🇬🇧 English":
-        user_lang[chat_id] = "en"
-
     elif message.text == "🇷🇺 Русский":
         user_lang[chat_id] = "ru"
+    elif message.text == "🇬🇧 English":
+        user_lang[chat_id] = "en"
+    elif message.text == "🔤 Lotin → Кирилл":
+        user_lang[chat_id] = "ru"  # lotin→kirill rus alifbosi
 
-    elif message.text == "🔤 Кирилл → Lotin":
-        user_lang[chat_id] = "uz"
-        bot.send_message(chat_id, "Kirilcha matn yoz ✍️")
-        return
-
-    bot.send_message(chat_id, "Endi matn kiriting ✍️")
+    bot.send_message(chat_id, "Endi matn yoz ✍️")
 
 # ====== TARJIMA ======
 @bot.message_handler(func=lambda msg: True)
@@ -71,9 +64,9 @@ def translate_text(message):
 
     try:
         lang = user_lang[chat_id]
-        result = translator.translate(text, src='auto', dest=lang)
+        result = translator.translate(text, dest=lang)
         bot.send_message(chat_id, result.text)
-    except Exception:
+    except Exception as e:
         bot.send_message(chat_id, "Xatolik bo‘ldi ⚠️")
 
 # ====== RUN ======
