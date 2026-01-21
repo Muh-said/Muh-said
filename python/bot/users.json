@@ -1,0 +1,15 @@
+{
+  "operator0120": {
+    "password": "977322994Aa",
+    "is_admin": false
+  },
+  "developer17": {
+    "password": "344601809",
+    "is_admin": false
+  },
+  "admin": {
+    "password": "admin123",
+    "user_id": 2109017495,
+    "is_admin": true
+  }
+}
