@@ -1,0 +1,62 @@
+# Flutter / Dart (jarvis_notebook_controller)
+jarvis_notebook_controller/build/
+
+# Flutter / Dart (лекарства)
+лекарства/build/
+лекарства/.dart_tool/
+лекарства/.flutter-plugins
+лекарства/.flutter-plugins-dependencies
+лекарства/android/.gradle/
+лекарства/android/app/build/
+лекарства/android/local.properties
+лекарства/ios/Pods/
+лекарства/ios/.symlinks/
+лекарства/*.iml
+jarvis_notebook_controller/.dart_tool/
+jarvis_notebook_controller/.flutter-plugins
+jarvis_notebook_controller/.flutter-plugins-dependencies
+jarvis_notebook_controller/.tmp_video_frames/
+jarvis_notebook_controller/android/.gradle/
+jarvis_notebook_controller/android/app/build/
+jarvis_notebook_controller/android/local.properties
+jarvis_notebook_controller/ios/Pods/
+jarvis_notebook_controller/ios/.symlinks/
+jarvis_notebook_controller/*.iml
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/venv/
+**/venv_broken_*/
+
+# Desktop runtime ma'lumotlari (qayta yaratiladi)
+jarvis.said11/jarvis/desktop_app/Said_ai_data/
+jarvis.said11/jarvis/desktop_app/tmp_exe_run/
+jarvis.said11/jarvis/desktop_app/build/
+jarvis.said11/jarvis/desktop_app/dist/
+jarvis.said11/jarvis/telegram_bot/.venv/
+jarvis.said11/jarvis/telegram_bot/data/*.session
+jarvis.said11/jarvis/telegram_bot/data/*.session-journal
+
+# Katta arxivlar (repoda saqlanmaydi)
+jarvis_full*.zip
+
+# IDE / OS
+.cursor/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Maxfiy kalitlar (namuna fayllar qoladi)
+**/.env
+!**/.env.example
+!**/env.example.txt

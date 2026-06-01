@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="pageTitle">Muhammad Said — Mobile & AI Developer | Portfolio</title>
+  <meta name="description" data-i18n="metaDesc" content="Muhammad Said — Flutter mobil ilovalar, Telegram botlar va veb loyihalar. Toshkent, O'zbekiston.">
+  <meta name="theme-color" content="#0f0e17">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+/* ======================================================================
+   Muhammad Said — Portfolio
+   Liquid-glass aesthetic · 3 tillar (UZ/RU/EN) · Kun/Tun rejimi
+   ====================================================================== */
+
+/* ---------- Tun (dark) — default ---------- */
+:root,
+body.theme-dark {
+  --bg-1: #07060f;
+  --bg-2: #120f24;
+  --bg-3: #0c1d3a;
+  --blob-a: rgba(124, 92, 255, 0.45);
+  --blob-b: rgba(0, 209, 178, 0.35);
+  --blob-c: rgba(201, 162, 39, 0.40);
+
+  --text: #f5f3ff;
+  --text-soft: rgba(245, 243, 255, 0.74);
+  --text-faint: rgba(245, 243, 255, 0.50);
+
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.10);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-border-strong: rgba(255, 255, 255, 0.22);
+
+  --accent: #8b7cff;
+  --accent-2: #00d1b2;
+  --gold: #e3b341;
+
+  --chip-bg: rgba(255, 255, 255, 0.06);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --header-bg: rgba(12, 11, 24, 0.55);
+  --code-bg: rgba(4, 4, 12, 0.7);
+}
+
+/* ---------- Kun (light) ---------- */
+body.theme-light {
+  --bg-1: #eef1f8;
+  --bg-2: #e6e9f4;
+  --bg-3: #dfe6f2;
+  --blob-a: rgba(124, 92, 255, 0.28);
+  --blob-b: rgba(0, 178, 152, 0.22);
+  --blob-c: rgba(201, 162, 39, 0.28);
+
+  --text: #15131f;
+  --text-soft: rgba(21, 19, 31, 0.72);
+  --text-faint: rgba(21, 19, 31, 0.50);
+
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.80);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-border-strong: rgba(124, 92, 255, 0.25);
+
+  --accent: #6a4bff;
+  --accent-2: #00a98f;
+  --gold: #b7860b;
+
+  --chip-bg: rgba(255, 255, 255, 0.7);
+  --shadow: 0 22px 50px rgba(31, 38, 80, 0.16);
+  --header-bg: rgba(255, 255, 255, 0.68);
+  --code-bg: rgba(20, 20, 35, 0.92);
+}
+
+:root {
+  --radius: 22px;
+  --radius-lg: 30px;
+  --blur: 18px;
+  --maxw: 1080px;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Sora', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--text);
+  background: var(--bg-2);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.5s var(--ease), color 0.4s var(--ease);
+}
+
+/* ---------- Animatsiyali fon ---------- */
+.bg-field {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 50% 0%, var(--bg-3), transparent 55%),
+    linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 55%, var(--bg-3) 120%);
+}
+.blob {
+  position: fixed;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.85;
+  pointer-events: none;
+  animation: float 22s var(--ease) infinite alternate;
+}
+.blob.a { width: 46vw; height: 46vw; background: var(--blob-a); top: -8vw; left: -6vw; }
+.blob.b { width: 40vw; height: 40vw; background: var(--blob-b); bottom: -10vw; right: -8vw; animation-delay: -7s; }
+.blob.c { width: 34vw; height: 34vw; background: var(--blob-c); top: 38%; left: 55%; animation-delay: -13s; }
+@keyframes float {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(4vw, 5vh) scale(1.12); }
+  100% { transform: translate(-3vw, -4vh) scale(0.95); }
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 14px;
+  z-index: 100;
+  width: min(var(--maxw), calc(100% - 2rem));
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: var(--header-bg);
+  backdrop-filter: blur(var(--blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.55rem 0.7rem 0.55rem 1.25rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--text);
+}
+.brand-mark {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 11px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 6px 18px rgba(124, 92, 255, 0.4);
+}
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.01em; }
+
+.header-nav { display: flex; align-items: center; gap: 1.4rem; }
+.nav-links { display: none; gap: 1.3rem; }
+.nav-links a {
+  color: var(--text-soft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -5px;
+  width: 0; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.25s var(--ease);
+}
+.nav-links a:hover { color: var(--text); }
+.nav-links a:hover::after { width: 100%; }
+@media (min-width: 880px) { .nav-links { display: flex; } }
+
+.header-tools { display: flex; align-items: center; gap: 0.4rem; }
+.lang-switcher { display: flex; padding: 3px; border-radius: 999px; background: var(--chip-bg); border: 1px solid var(--glass-border); }
+.lang-btn {
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+  padding: 0.34rem 0.6rem;
+  border: none; background: transparent; color: var(--text-soft);
+  cursor: pointer; border-radius: 999px; transition: all 0.2s var(--ease);
+}
+.lang-btn.active { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+.theme-btn {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--chip-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.3s var(--ease), background 0.2s;
+}
+.theme-btn:hover { transform: rotate(-20deg) scale(1.05); }
+
+/* ---------- Layout ---------- */
+.wrap { width: min(var(--maxw), calc(100% - 2rem)); margin: 0 auto; }
+section { scroll-margin-top: 90px; }
+
+.kicker {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-2);
+  margin: 0 0 0.9rem;
+}
+.kicker::before { content: ''; width: 26px; height: 2px; border-radius: 2px; background: var(--accent-2); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  font-weight: 700; line-height: 1.1; margin: 0 0 0.6rem;
+  letter-spacing: -0.01em;
+}
+.section-lead { color: var(--text-soft); font-size: 1.02rem; line-height: 1.7; max-width: 56ch; margin: 0 0 2.2rem; }
+.section-head { margin-bottom: 2.4rem; }
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur)) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Hero ---------- */
+.hero { padding: clamp(3.5rem, 9vh, 6.5rem) 0 clamp(2.5rem, 6vh, 4rem); }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.85rem; border-radius: 999px;
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  font-size: 0.82rem; font-weight: 500; color: var(--text-soft);
+  margin-bottom: 1.4rem;
+}
+.hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 0 var(--accent-2); animation: pulse 2.2s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,209,178,.5); } 70% { box-shadow: 0 0 0 9px rgba(0,209,178,0); } 100% { box-shadow: 0 0 0 0 rgba(0,209,178,0); } }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 8vw, 5rem);
+  font-weight: 800; line-height: 1.02; margin: 0 0 1rem; letter-spacing: -0.02em;
+}
+.hero-title .grad {
+  background: linear-gradient(115deg, var(--accent), var(--accent-2) 55%, var(--gold));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub { font-size: clamp(1.05rem, 2.4vw, 1.3rem); color: var(--text-soft); max-width: 54ch; line-height: 1.6; margin: 0 0 2rem; }
+.hero-roles { font-weight: 600; color: var(--text); }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 2.6rem; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  padding: 0.85rem 1.4rem; border-radius: 14px;
+  font-family: var(--font-body); font-size: 0.96rem; font-weight: 600;
+  text-decoration: none; cursor: pointer; border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.2s;
+}
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.btn-primary { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 12px 30px rgba(124, 92, 255, 0.4); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(124, 92, 255, 0.5); }
+.btn-ghost { color: var(--text); background: var(--glass-bg-strong); border-color: var(--glass-border); }
+.btn-ghost:hover { transform: translateY(-3px); border-color: var(--glass-border-strong); }
+
+.hero-stats { display: flex; flex-wrap: wrap; gap: 1.4rem 2.6rem; }
+.stat .num { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 700; color: var(--text); }
+.stat .num .grad { background: linear-gradient(115deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.stat .lbl { font-size: 0.82rem; color: var(--text-faint); letter-spacing: 0.02em; }
+
+/* ---------- About ---------- */
+.about-grid { display: grid; gap: 1.6rem; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .about-grid { grid-template-columns: 1.4fr 1fr; } }
+.about-card { border-radius: var(--radius-lg); padding: 2rem; }
+.about-card p { color: var(--text-soft); line-height: 1.78; margin: 0 0 1.1rem; font-size: 1.02rem; }
+.about-card p:last-child { margin-bottom: 0; }
+.about-card strong { color: var(--text); font-weight: 600; }
+.about-aside { border-radius: var(--radius-lg); padding: 1.8rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.fact { display: flex; align-items: center; gap: 0.9rem; }
+.fact i { width: 40px; height: 40px; flex: none; display: grid; place-items: center; border-radius: 12px; background: var(--chip-bg); color: var(--accent-2); font-size: 1.05rem; }
+.fact .ft { font-size: 0.78rem; color: var(--text-faint); }
+.fact .fv { font-size: 0.98rem; font-weight: 600; color: var(--text); }
+.lang-bars { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.4rem; }
+.lang-bar .top { display: flex; justify-content: space-between; font-size: 0.86rem; color: var(--text-soft); margin-bottom: 0.4rem; }
+.bar-track { height: 7px; border-radius: 999px; background: var(--chip-bg); overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; width: 0; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width 1.1s var(--ease); }
+
+/* ---------- Skills ---------- */
+.skills-grid { display: grid; gap: 1.2rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.skill-group { border-radius: var(--radius); padding: 1.5rem; }
+.skill-group h3 { display: flex; align-items: center; gap: 0.6rem; font-family: var(--font-body); font-size: 1rem; font-weight: 600; margin: 0 0 1.1rem; }
+.skill-group h3 i { color: var(--accent); }
+.chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.45rem 0.8rem; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 500; color: var(--text-soft);
+  background: var(--chip-bg); border: 1px solid var(--glass-border);
+  transition: transform 0.2s var(--ease), color 0.2s, border-color 0.2s;
+}
+.chip:hover { transform: translateY(-2px); color: var(--text); border-color: var(--glass-border-strong); }
+.chip i { color: var(--accent-2); }
+
+/* ---------- Featured mobile apps ---------- */
+.app-card {
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 1fr;
+  align-items: center;
+  margin-bottom: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+.app-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0.5; pointer-events: none;
+  background: radial-gradient(circle at 85% 15%, var(--app-glow, var(--blob-a)), transparent 45%);
+}
+@media (min-width: 820px) {
+  .app-card { grid-template-columns: 280px 1fr; gap: 2.5rem; padding: 2.4rem; }
+  .app-card.reverse { grid-template-columns: 1fr 280px; }
+  .app-card.reverse .phone-col { order: 2; }
+}
+.app-card > * { position: relative; z-index: 1; }
+
+/* Telefon mockup (faqat CSS) */
+.phone-col { display: flex; justify-content: center; }
+.phone {
+  width: 220px; aspect-ratio: 9 / 19;
+  border-radius: 34px; padding: 10px;
+  background: linear-gradient(160deg, rgba(255,255,255,0.18), rgba(255,255,255,0.04));
+  border: 1px solid var(--glass-border-strong);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+  position: relative;
+}
+.phone::before { content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 70px; height: 6px; border-radius: 99px; background: rgba(0,0,0,0.4); z-index: 3; }
+.phone-screen {
+  width: 100%; height: 100%; border-radius: 26px; overflow: hidden;
+  background: var(--screen, linear-gradient(165deg, #14304f, #0a1a2e));
+  display: flex; flex-direction: column; color: #fff; padding: 26px 16px 16px;
+}
+.ps-top { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.ps-logo { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-size: 1rem; background: rgba(255,255,255,0.18); }
+.ps-name { font-weight: 700; font-size: 0.92rem; }
+.ps-tag { font-size: 0.62rem; opacity: 0.8; }
+.ps-search { background: rgba(255,255,255,0.16); border-radius: 10px; height: 26px; display: flex; align-items: center; padding: 0 10px; font-size: 0.6rem; opacity: 0.85; gap: 6px; margin-bottom: 12px; }
+.ps-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.ps-cell { background: rgba(255,255,255,0.12); border-radius: 12px; height: 58px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; font-size: 0.95rem; }
+.ps-cell span { font-size: 0.52rem; opacity: 0.8; }
+.ps-bar { margin-top: auto; display: flex; justify-content: space-around; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 0.85rem; opacity: 0.9; }
+
+.app-meta .eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 0.7rem; }
+.app-meta h3 { font-family: var(--font-display); font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; margin: 0 0 0.2rem; }
+.app-meta .app-sub { color: var(--text-soft); font-size: 0.95rem; margin: 0 0 1.1rem; }
+.app-meta p { color: var(--text-soft); line-height: 1.7; margin: 0 0 1.2rem; }
+.feat-list { list-style: none; padding: 0; margin: 0 0 1.3rem; display: grid; gap: 0.55rem; grid-template-columns: 1fr; }
+@media (min-width: 520px) { .feat-list { grid-template-columns: 1fr 1fr; } }
+.feat-list li { display: flex; align-items: flex-start; gap: 0.55rem; font-size: 0.9rem; color: var(--text-soft); }
+.feat-list li i { color: var(--accent-2); font-size: 0.85rem; margin-top: 0.22rem; }
+.tech-row { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 1.3rem; }
+.tech-tag { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.3rem 0.6rem; border-radius: 8px; background: var(--chip-bg); border: 1px solid var(--glass-border); color: var(--text-soft); }
+.app-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+.btn-sm { padding: 0.65rem 1.1rem; font-size: 0.88rem; border-radius: 12px; }
+
+/* ---------- Projects grid ---------- */
+.proj-grid { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+.proj {
+  border-radius: var(--radius); padding: 1.5rem; text-decoration: none; color: var(--text);
+  display: flex; flex-direction: column; gap: 0.7rem; position: relative; overflow: hidden;
+  transition: transform 0.3s var(--ease), border-color 0.3s;
+}
+.proj:hover { transform: translateY(-5px); border-color: var(--glass-border-strong); }
+.proj .ic { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; font-size: 1.2rem; color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-2)); }
+.proj h3 { font-size: 1.05rem; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 0.5rem; }
+.proj p { font-size: 0.88rem; color: var(--text-soft); line-height: 1.6; margin: 0; flex: 1; }
+.proj .go { font-size: 0.82rem; font-weight: 600; color: var(--accent-2); display: inline-flex; align-items: center; gap: 0.4rem; }
+.proj:hover .go i { transform: translateX(4px); }
+.proj .go i { transition: transform 0.25s var(--ease); }
+.proj .tag { position: absolute; top: 1.1rem; right: 1.1rem; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 0.25rem 0.55rem; border-radius: 999px; background: var(--chip-bg); border: 1px solid var(--glass-border); color: var(--text-faint); }
+
+/* ---------- Bots ---------- */
+.bot-grid { display: grid; gap: 1.1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-bottom: 1.6rem; }
+.bot { border-radius: var(--radius); padding: 1.6rem; display: flex; flex-direction: column; gap: 0.6rem; text-decoration: none; color: var(--text); transition: transform 0.3s var(--ease), border-color 0.3s; }
+.bot:hover { transform: translateY(-4px); border-color: var(--glass-border-strong); }
+.bot .bt { display: flex; align-items: center; gap: 0.7rem; }
+.bot .bt i { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 1.15rem; color: #fff; background: linear-gradient(135deg, #2aabee, #229ed9); }
+.bot h3 { margin: 0; font-size: 1.02rem; font-weight: 600; }
+.bot .handle { font-size: 0.8rem; color: var(--accent-2); font-family: var(--font-mono); }
+.bot p { margin: 0; font-size: 0.88rem; color: var(--text-soft); line-height: 1.6; }
+
+/* ---------- Contact ---------- */
+.contact-card { border-radius: var(--radius-lg); padding: clamp(2rem, 5vw, 3rem); text-align: center; }
+.contact-card h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; margin: 0 0 0.7rem; }
+.contact-card p { color: var(--text-soft); max-width: 48ch; margin: 0 auto 2rem; line-height: 1.7; }
+.contact-links { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+
+/* ---------- Footer ---------- */
+.footer { text-align: center; padding: 3rem 0 2.5rem; color: var(--text-faint); font-size: 0.85rem; }
+
+/* ---------- Reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .blob { animation: none; }
+}
+
+.section-pad { padding: clamp(3rem, 8vh, 5.5rem) 0; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 11px; }
+::-webkit-scrollbar-thumb { background: var(--glass-border-strong); border-radius: 99px; border: 3px solid transparent; background-clip: padding-box; }
+  </style>
+</head>
+<body class="theme-dark">
+  <div class="bg-field" aria-hidden="true"></div>
+  <div class="blob a" aria-hidden="true"></div>
+  <div class="blob b" aria-hidden="true"></div>
+  <div class="blob c" aria-hidden="true"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark">MS</span>
+        <span class="brand-name">Muhammad Said</span>
+      </a>
+      <div class="header-nav">
+        <nav class="nav-links">
+          <a href="#about" data-i18n="navAbout">Men haqimda</a>
+          <a href="#apps" data-i18n="navApps">Mobil ilovalar</a>
+          <a href="#projects" data-i18n="navProjects">Loyihalar</a>
+          <a href="#bots" data-i18n="navBots">Botlar</a>
+          <a href="#contact" data-i18n="navContact">Bog'lanish</a>
+        </nav>
+        <div class="header-tools">
+          <div class="lang-switcher" role="group" aria-label="Til">
+            <button type="button" class="lang-btn active" data-lang="uz">UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru">RU</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <button type="button" class="theme-btn" id="themeToggle" aria-label="Kun/Tun rejimi"><i class="fa fa-moon"></i></button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ============ HERO ============ -->
+    <section class="wrap hero">
+      <div class="reveal">
+        <span class="hero-badge"><span class="dot"></span><span data-i18n="heroAvail">Loyihalar uchun ochiq · Toshkent, O'zbekiston</span></span>
+        <h1 class="hero-title"><span data-i18n="heroHi">Salom, men</span> <span class="grad">Muhammad Said</span></h1>
+        <p class="hero-sub"><span class="hero-roles" data-i18n="heroRoles">Mobil & AI dasturchi.</span> <span data-i18n="heroSub">Flutter'da mobil ilovalar va Telegram botlar yarataman. 16 yoshda, sun'iy intellekt va avtomatlashtirishga ishtiyoqmandman.</span></p>
+        <div class="hero-cta">
+          <a href="#apps" class="btn btn-primary"><i class="fa fa-mobile-screen"></i><span data-i18n="ctaApps">Mobil ilovalarim</span></a>
+          <a href="MedCity.apk" download class="btn btn-ghost"><i class="fa fa-download"></i><span data-i18n="ctaApk">MedCity APK</span></a>
+          <a href="#contact" class="btn btn-ghost"><i class="fa fa-paper-plane"></i><span data-i18n="ctaContact">Bog'lanish</span></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><div class="num"><span class="grad">2</span></div><div class="lbl" data-i18n="statApps">Mobil ilova</div></div>
+          <div class="stat"><div class="num"><span class="grad">3+</span></div><div class="lbl" data-i18n="statBots">Telegram bot</div></div>
+          <div class="stat"><div class="num"><span class="grad">16</span></div><div class="lbl" data-i18n="statAge">Yosh</div></div>
+          <div class="stat"><div class="num"><span class="grad">3</span></div><div class="lbl" data-i18n="statLangs">Til (UZ/RU/EN)</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="wrap section-pad">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="aboutKicker">Men haqimda</span>
+        <h2 class="section-title" data-i18n="aboutTitle">Yosh, lekin jiddiy dasturchi</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card glass reveal">
+          <p data-i18n="aboutP1"><strong>16 yosh</strong>, O'zbekiston, Toshkent shahar, Olmazor tumanida yashayman. Dasturlash va <strong>mobil ilovalar yaratishga</strong> qiziqaman, sun'iy intellekt bo'yicha tajriba orttirishni yaxshi ko'raman.</p>
+          <p data-i18n="aboutP2">Menga <strong>sun'iy intellekt (AI)</strong> va avtomatlashtirish juda yoqadi. Hozircha <strong>Flutter</strong> mobil ilovalar va Telegram botlar bilan shug'ullanaman — kelajakda chatbotlar va aqlli tizimlar yaratmoqchiman.</p>
+          <p data-i18n="aboutP3">Maqsadim — har kuni yangi narsa o'rganib, professional dasturchi bo'lish va AI sohasida chuqur tajriba orttirish.</p>
+        </div>
+        <aside class="about-aside glass reveal">
+          <div class="fact"><i class="fa fa-location-dot"></i><div><div class="ft" data-i18n="factLocLbl">Joylashuv</div><div class="fv" data-i18n="factLocVal">Toshkent, O'zbekiston</div></div></div>
+          <div class="fact"><i class="fa fa-graduation-cap"></i><div><div class="ft" data-i18n="factFocusLbl">Yo'nalish</div><div class="fv" data-i18n="factFocusVal">Mobil ilovalar & AI</div></div></div>
+          <div class="lang-bars">
+            <div class="lang-bar"><div class="top"><span data-i18n="langEn">Ingliz tili</span><span data-i18n="langElem">Elementar</span></div><div class="bar-track"><div class="bar-fill" data-w="45%"></div></div></div>
+            <div class="lang-bar"><div class="top"><span data-i18n="langRu">Rus tili</span><span data-i18n="langElem2">Elementar</span></div><div class="bar-track"><div class="bar-fill" data-w="45%"></div></div></div>
+            <div class="lang-bar"><div class="top"><span data-i18n="langUz">O'zbek tili</span><span data-i18n="langNative">Ona tili</span></div><div class="bar-track"><div class="bar-fill" data-w="100%"></div></div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="wrap section-pad">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="skillsKicker">Texnologiyalar</span>
+        <h2 class="section-title" data-i18n="skillsTitle">Bilim va ko'nikmalarim</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group glass reveal">
+          <h3><i class="fa fa-mobile-screen-button"></i><span data-i18n="skMobile">Mobil</span></h3>
+          <div class="chips">
+            <span class="chip"><i class="fa fa-bolt"></i>Flutter</span>
+            <span class="chip"><i class="fa fa-bolt"></i>Dart</span>
+            <span class="chip"><i class="fa fa-cube"></i>BLoC / Cubit</span>
+            <span class="chip"><i class="fa fa-fire"></i>Firebase</span>
+            <span class="chip"><i class="fa fa-map-location-dot"></i>Maps / GPS</span>
+          </div>
+        </div>
+        <div class="skill-group glass reveal">
+          <h3><i class="fa fa-code"></i><span data-i18n="skWeb">Veb</span></h3>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-html5"></i>HTML</span>
+            <span class="chip"><i class="fa-brands fa-css3-alt"></i>CSS</span>
+            <span class="chip"><i class="fa-brands fa-js"></i>JavaScript</span>
+            <span class="chip"><i class="fa fa-server"></i>Django</span>
+          </div>
+        </div>
+        <div class="skill-group glass reveal">
+          <h3><i class="fa fa-robot"></i><span data-i18n="skAi">AI & Botlar</span></h3>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-python"></i>Python</span>
+            <span class="chip"><i class="fa-brands fa-telegram"></i>Telegram Bot</span>
+            <span class="chip"><i class="fa fa-brain"></i>Groq / LLM</span>
+            <span class="chip"><i class="fa fa-microphone"></i>Voice / TTS</span>
+          </div>
+        </div>
+        <div class="skill-group glass reveal">
+          <h3><i class="fa fa-screwdriver-wrench"></i><span data-i18n="skTools">Vositalar</span></h3>
+          <div class="chips">
+            <span class="chip"><i class="fa-brands fa-git-alt"></i>Git</span>
+            <span class="chip"><i class="fa-brands fa-github"></i>GitHub</span>
+            <span class="chip"><i class="fa-brands fa-linux"></i> Ubuntu</span>
+            <span class="chip"><i class="fa fa-wand-magic-sparkles"></i>Vibe coding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MOBILE APPS ============ -->
+    <section id="apps" class="wrap section-pad">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="appsKicker">Asosiy ishlar</span>
+        <h2 class="section-title" data-i18n="appsTitle">Mobil ilovalarim</h2>
+        <p class="section-lead" data-i18n="appsLead">Flutter'da noldan yaratilgan ikkita to'liq mobil ilova — biri dorixona e-commerce, ikkinchisi telefondan noutbukni boshqaruvchi tizim.</p>
+      </div>
+
+      <!-- App 1: MedCity / PharmaGo -->
+      <article class="app-card glass reveal" style="--app-glow: rgba(0,209,178,0.4);">
+        <div class="phone-col">
+          <div class="phone">
+            <div class="phone-screen" style="--screen: linear-gradient(165deg,#0a8f7a,#064b54);">
+              <div class="ps-top">
+                <div class="ps-logo"><i class="fa fa-plus"></i></div>
+                <div><div class="ps-name">MedCity</div><div class="ps-tag">Pharmacy delivery</div></div>
+              </div>
+              <div class="ps-search"><i class="fa fa-magnifying-glass"></i> Dori qidirish…</div>
+              <div class="ps-row">
+                <div class="ps-cell"><i class="fa fa-pills"></i><span>Dorilar</span></div>
+                <div class="ps-cell"><i class="fa fa-heart-pulse"></i><span>Vitaminlar</span></div>
+              </div>
+              <div class="ps-row">
+                <div class="ps-cell"><i class="fa fa-baby"></i><span>Bolalar</span></div>
+                <div class="ps-cell"><i class="fa fa-shield-virus"></i><span>Immunitet</span></div>
+              </div>
+              <div class="ps-bar"><i class="fa fa-house"></i><i class="fa fa-magnifying-glass"></i><i class="fa fa-cart-shopping"></i><i class="fa fa-user"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="app-meta">
+          <span class="eyebrow"><i class="fa fa-mobile-screen"></i> Flutter · Android</span>
+          <h3>MedCity / PharmaGo</h3>
+          <p class="app-sub" data-i18n="app1Sub">Mobil dorixona e-commerce ilovasi</p>
+          <p data-i18n="app1Desc">To'liq dorixona buyurtma ilovasi: dorilar katalogi, qidiruv, savat, to'lov, yetkazib berish manzilini xaritada tanlash va buyurtmalarni kuzatish. Toza arxitektura (BLoC), Firebase autentifikatsiya va 3 til qo'llab-quvvatlanadi.</p>
+          <ul class="feat-list">
+            <li><i class="fa fa-check"></i><span data-i18n="app1F1">Dorilar katalogi va aqlli qidiruv</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app1F2">Savat, to'lov va buyurtma tarixi</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app1F3">Xaritada yetkazib berish manzili</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app1F4">Dori eslatmalari va sevimlilar</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-tag">Flutter</span><span class="tech-tag">BLoC</span><span class="tech-tag">Firebase</span><span class="tech-tag">go_router</span><span class="tech-tag">flutter_map</span><span class="tech-tag">Hive</span>
+          </div>
+          <div class="app-actions">
+            <a href="MedCity.apk" download class="btn btn-primary btn-sm"><i class="fa fa-download"></i><span data-i18n="app1Dl">APK yuklab olish</span></a>
+            <span class="btn btn-ghost btn-sm" style="cursor:default;"><i class="fa-brands fa-android"></i> v1.0.0 · 25 MB</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- App 2: Nex.Ai notebook controller -->
+      <article class="app-card reverse glass reveal" style="--app-glow: rgba(124,92,255,0.4);">
+        <div class="app-meta">
+          <span class="eyebrow"><i class="fa fa-network-wired"></i> Flutter · WebSocket</span>
+          <h3>Nex.Ai</h3>
+          <p class="app-sub" data-i18n="app2Sub">Telefondan noutbukni boshqarish</p>
+          <p data-i18n="app2Desc">Mahalliy tarmoq orqali telefoningizdan noutbukni boshqaruvchi ilova. QR-kod orqali xavfsiz ulanish, ovozli buyruqlar, eslatmalar va bildirishnomalar. Desktop agent (Python) bilan WebSocket orqali real vaqtda aloqa qiladi.</p>
+          <ul class="feat-list">
+            <li><i class="fa fa-check"></i><span data-i18n="app2F1">QR-kod orqali xavfsiz ulanish</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app2F2">Ovozli buyruqlar va TTS javob</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app2F3">Eslatma va bildirishnomalar</span></li>
+            <li><i class="fa fa-check"></i><span data-i18n="app2F4">Real vaqt WebSocket aloqa</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-tag">Flutter</span><span class="tech-tag">WebSocket</span><span class="tech-tag">FastAPI</span><span class="tech-tag">QR pairing</span><span class="tech-tag">flutter_tts</span><span class="tech-tag">Python</span>
+          </div>
+          <div class="app-actions">
+            <a href="https://t.me/Nexai7_bot" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fa-brands fa-telegram"></i><span data-i18n="app2More">Botni ochish</span></a>
+          </div>
+        </div>
+        <div class="phone-col">
+          <div class="phone">
+            <div class="phone-screen" style="--screen: linear-gradient(165deg,#2a1c5e,#0d1030);">
+              <div class="ps-top">
+                <div class="ps-logo"><i class="fa fa-bolt"></i></div>
+                <div><div class="ps-name">Nex.Ai</div><div class="ps-tag">Notebook control</div></div>
+              </div>
+              <div class="ps-search"><i class="fa fa-qrcode"></i> Ulangan · WiFi</div>
+              <div class="ps-row">
+                <div class="ps-cell"><i class="fa fa-microphone"></i><span>Ovoz</span></div>
+                <div class="ps-cell"><i class="fa fa-bell"></i><span>Eslatma</span></div>
+              </div>
+              <div class="ps-row">
+                <div class="ps-cell"><i class="fa fa-display"></i><span>Ekran</span></div>
+                <div class="ps-cell"><i class="fa fa-folder-open"></i><span>Fayllar</span></div>
+              </div>
+              <div class="ps-bar"><i class="fa fa-house"></i><i class="fa fa-microphone"></i><i class="fa fa-gear"></i></div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="wrap section-pad">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="projKicker">Boshqa ishlar</span>
+        <h2 class="section-title" data-i18n="projTitle">Boshqa loyihalar</h2>
+      </div>
+      <div class="proj-grid">
+        <a class="proj glass reveal" href="https://muhammad17.lovable.app" target="_blank" rel="noopener">
+          <span class="tag">Web</span>
+          <span class="ic"><i class="fa fa-mug-hot"></i></span>
+          <h3>Coffee Shop</h3>
+          <p data-i18n="projCoffee">Zamonaviy qahvaxona uchun landing sahifa — toza dizayn va silliq animatsiyalar.</p>
+          <span class="go" data-i18n="projOpen">Ochish <i class="fa fa-arrow-right"></i></span>
+        </a>
+        <a class="proj glass reveal" href="https://muhammaddiv.lovable.app" target="_blank" rel="noopener">
+          <span class="tag">AI</span>
+          <span class="ic"><i class="fa fa-robot"></i></span>
+          <h3>AI Project</h3>
+          <p data-i18n="projAi">Sun'iy intellekt asosidagi veb loyiha — interaktiv va aqlli interfeys.</p>
+          <span class="go" data-i18n="projOpen2">Ochish <i class="fa fa-arrow-right"></i></span>
+        </a>
+        <a class="proj glass reveal" href="web.html" target="_blank" rel="noopener">
+          <span class="tag">JS</span>
+          <span class="ic"><i class="fa fa-calculator"></i></span>
+          <h3>Calculator</h3>
+          <p data-i18n="projCalc">Liquid-glass dizayndagi kalkulyator — sof JavaScript'da yozilgan.</p>
+          <span class="go" data-i18n="projOpen3">Ochish <i class="fa fa-arrow-right"></i></span>
+        </a>
+        <a class="proj glass reveal" href="http://localhost:8001/" target="_blank" rel="noopener">
+          <span class="tag">Django</span>
+          <span class="ic"><i class="fa fa-database"></i></span>
+          <h3>Django Project</h3>
+          <p data-i18n="projDjango">Python Django'da yozilgan backend loyiha — ma'lumotlar bazasi bilan ishlash.</p>
+          <span class="go" data-i18n="projOpen4">Ochish <i class="fa fa-arrow-right"></i></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ TELEGRAM BOTS ============ -->
+    <section id="bots" class="wrap section-pad">
+      <div class="section-head reveal">
+        <span class="kicker" data-i18n="botKicker">Avtomatlashtirish</span>
+        <h2 class="section-title" data-i18n="botTitle">Telegram botlar</h2>
+        <p class="section-lead" data-i18n="botLead">Python'da yozilgan, real foydalanuvchilarga xizmat qiluvchi Telegram botlar.</p>
+      </div>
+      <div class="bot-grid">
+        <a class="bot glass reveal" href="https://t.me/cyr17lat_bot" target="_blank" rel="noopener">
+          <div class="bt"><i class="fa-brands fa-telegram"></i><div><h3 data-i18n="bot1Name">Kirill ⇄ Lotin bot</h3><div class="handle">@cyr17lat_bot</div></div></div>
+          <p data-i18n="bot1Desc">Matnni kirill va lotin alifbolari o'rtasida bir zumda o'giradi. Tez va aniq.</p>
+        </a>
+        <a class="bot glass reveal" href="https://t.me/tushuntirish_xati_bot" target="_blank" rel="noopener">
+          <div class="bt"><i class="fa-brands fa-telegram"></i><div><h3 data-i18n="bot2Name">Tushuntirish xati bot</h3><div class="handle">@tushuntirish_xati_bot</div></div></div>
+          <p data-i18n="bot2Desc">Rasmiy tushuntirish xatlarini avtomatik tayyorlaydi. Jamoa bilan ishlab chiqilgan.</p>
+        </a>
+        <a class="bot glass reveal" href="https://t.me/Nexai7_bot" target="_blank" rel="noopener">
+          <div class="bt"><i class="fa fa-robot" style="background:linear-gradient(135deg,#8b7cff,#00d1b2);"></i><div><h3 data-i18n="bot3Name">Nex.Ai yordamchi</h3><div class="handle">@Nexai7_bot</div></div></div>
+          <p data-i18n="bot3Desc">Sun'iy intellektli yordamchi bot — o'zbekcha suhbat, ovoz va buyruqlar (Groq/Llama).</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="wrap section-pad">
+      <div class="contact-card glass reveal">
+        <h2 data-i18n="contactTitle">Keling, bog'lanamiz</h2>
+        <p data-i18n="contactLead">Loyiha, hamkorlik yoki shunchaki savol bo'lsa — yozing. Doim ochiqman.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="https://t.me/muhammadsaiddev" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+          <a class="btn btn-ghost" href="tel:+998949996443"><i class="fa fa-phone"></i> +998 94 999 64 43</a>
+          <a class="btn btn-ghost" href="https://instagram.com/dev7senior" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© <span id="year"></span> Muhammad Said</p>
+    </footer>
+  </main>
+
+  <script>
+  (function () {
+    /* ---------------- i18n ---------------- */
+    var translations = {
+      uz: {
+        pageTitle: "Muhammad Said — Mobil & AI dasturchi | Portfolio",
+        metaDesc: "Muhammad Said — Flutter mobil ilovalar, Telegram botlar va veb loyihalar. Toshkent, O'zbekiston.",
+        navAbout: "Men haqimda", navApps: "Mobil ilovalar", navProjects: "Loyihalar", navBots: "Botlar", navContact: "Bog'lanish",
+        heroAvail: "Loyihalar uchun ochiq · Toshkent, O'zbekiston",
+        heroHi: "Salom, men", heroRoles: "Mobil & AI dasturchi.",
+        heroSub: "Flutter'da mobil ilovalar va Telegram botlar yarataman. 16 yoshda, sun'iy intellekt va avtomatlashtirishga ishtiyoqmandman.",
+        ctaApps: "Mobil ilovalarim", ctaApk: "MedCity APK", ctaContact: "Bog'lanish",
+        statApps: "Mobil ilova", statBots: "Telegram bot", statAge: "Yosh", statLangs: "Til (UZ/RU/EN)",
+        aboutKicker: "Men haqimda", aboutTitle: "Yosh, lekin jiddiy dasturchi",
+        aboutP1: "<strong>16 yosh</strong>, O'zbekiston, Toshkent shahar, Olmazor tumanida yashayman. Dasturlash va <strong>mobil ilovalar yaratishga</strong> qiziqaman, sun'iy intellekt bo'yicha tajriba orttirishni yaxshi ko'raman.",
+        aboutP2: "Menga <strong>sun'iy intellekt (AI)</strong> va avtomatlashtirish juda yoqadi. Hozircha <strong>Flutter</strong> mobil ilovalar va Telegram botlar bilan shug'ullanaman — kelajakda chatbotlar va aqlli tizimlar yaratmoqchiman.",
+        aboutP3: "Maqsadim — har kuni yangi narsa o'rganib, professional dasturchi bo'lish va AI sohasida chuqur tajriba orttirish.",
+        factLocLbl: "Joylashuv", factLocVal: "Toshkent, O'zbekiston", factFocusLbl: "Yo'nalish", factFocusVal: "Mobil ilovalar & AI",
+        langEn: "Ingliz tili", langElem: "Elementar", langRu: "Rus tili", langElem2: "Elementar", langUz: "O'zbek tili", langNative: "Ona tili",
+        skillsKicker: "Texnologiyalar", skillsTitle: "Bilim va ko'nikmalarim", skMobile: "Mobil", skWeb: "Veb", skAi: "AI & Botlar", skTools: "Vositalar",
+        appsKicker: "Asosiy ishlar", appsTitle: "Mobil ilovalarim",
+        appsLead: "Flutter'da noldan yaratilgan ikkita to'liq mobil ilova — biri dorixona e-commerce, ikkinchisi telefondan noutbukni boshqaruvchi tizim.",
+        app1Sub: "Mobil dorixona e-commerce ilovasi",
+        app1Desc: "To'liq dorixona buyurtma ilovasi: dorilar katalogi, qidiruv, savat, to'lov, yetkazib berish manzilini xaritada tanlash va buyurtmalarni kuzatish. Toza arxitektura (BLoC), Firebase autentifikatsiya va 3 til qo'llab-quvvatlanadi.",
+        app1F1: "Dorilar katalogi va aqlli qidiruv", app1F2: "Savat, to'lov va buyurtma tarixi", app1F3: "Xaritada yetkazib berish manzili", app1F4: "Dori eslatmalari va sevimlilar",
+        app1Dl: "APK yuklab olish",
+        app2Sub: "Telefondan noutbukni boshqarish",
+        app2Desc: "Mahalliy tarmoq orqali telefoningizdan noutbukni boshqaruvchi ilova. QR-kod orqali xavfsiz ulanish, ovozli buyruqlar, eslatmalar va bildirishnomalar. Desktop agent (Python) bilan WebSocket orqali real vaqtda aloqa qiladi.",
+        app2F1: "QR-kod orqali xavfsiz ulanish", app2F2: "Ovozli buyruqlar va TTS javob", app2F3: "Eslatma va bildirishnomalar", app2F4: "Real vaqt WebSocket aloqa",
+        app2More: "Botni ochish",
+        projKicker: "Boshqa ishlar", projTitle: "Boshqa loyihalar",
+        projCoffee: "Zamonaviy qahvaxona uchun landing sahifa — toza dizayn va silliq animatsiyalar.",
+        projAi: "Sun'iy intellekt asosidagi veb loyiha — interaktiv va aqlli interfeys.",
+        projCalc: "Liquid-glass dizayndagi kalkulyator — sof JavaScript'da yozilgan.",
+        projDjango: "Python Django'da yozilgan backend loyiha — ma'lumotlar bazasi bilan ishlash.",
+        projOpen: "Ochish", projOpen2: "Ochish", projOpen3: "Ochish", projOpen4: "Ochish",
+        botKicker: "Avtomatlashtirish", botTitle: "Telegram botlar",
+        botLead: "Python'da yozilgan, real foydalanuvchilarga xizmat qiluvchi Telegram botlar.",
+        bot1Name: "Kirill ⇄ Lotin bot", bot1Desc: "Matnni kirill va lotin alifbolari o'rtasida bir zumda o'giradi. Tez va aniq.",
+        bot2Name: "Tushuntirish xati bot", bot2Desc: "Rasmiy tushuntirish xatlarini avtomatik tayyorlaydi. Jamoa bilan ishlab chiqilgan.",
+        bot3Name: "Nex.Ai yordamchi", bot3Desc: "Sun'iy intellektli yordamchi bot — o'zbekcha suhbat, ovoz va buyruqlar (Groq/Llama).",
+        contactTitle: "Keling, bog'lanamiz", contactLead: "Loyiha, hamkorlik yoki shunchaki savol bo'lsa — yozing. Doim ochiqman."
+      },
+      ru: {
+        pageTitle: "Мухаммад Саид — Mobile & AI разработчик | Портфолио",
+        metaDesc: "Мухаммад Саид — мобильные приложения на Flutter, Telegram-боты и веб-проекты. Ташкент, Узбекистан.",
+        navAbout: "Обо мне", navApps: "Приложения", navProjects: "Проекты", navBots: "Боты", navContact: "Контакты",
+        heroAvail: "Открыт для проектов · Ташкент, Узбекистан",
+        heroHi: "Привет, я", heroRoles: "Mobile & AI разработчик.",
+        heroSub: "Создаю мобильные приложения на Flutter и Telegram-ботов. Мне 16 лет, увлечён искусственным интеллектом и автоматизацией.",
+        ctaApps: "Мои приложения", ctaApk: "MedCity APK", ctaContact: "Связаться",
+        statApps: "Моб. приложения", statBots: "Telegram-бота", statAge: "Лет", statLangs: "Языка (UZ/RU/EN)",
+        aboutKicker: "Обо мне", aboutTitle: "Молодой, но серьёзный разработчик",
+        aboutP1: "<strong>16 лет</strong>, живу в Узбекистане, г. Ташкент, район Алмазар. Интересуюсь программированием и <strong>созданием мобильных приложений</strong>, люблю набираться опыта в области искусственного интеллекта.",
+        aboutP2: "Мне очень нравятся <strong>искусственный интеллект (AI)</strong> и автоматизация. Сейчас работаю с мобильными приложениями на <strong>Flutter</strong> и Telegram-ботами — в будущем хочу создавать чат-ботов и умные системы.",
+        aboutP3: "Моя цель — каждый день учиться новому, стать профессиональным разработчиком и набраться глубокого опыта в сфере AI.",
+        factLocLbl: "Локация", factLocVal: "Ташкент, Узбекистан", factFocusLbl: "Направление", factFocusVal: "Мобильные приложения & AI",
+        langEn: "Английский", langElem: "Элементарный", langRu: "Русский", langElem2: "Элементарный", langUz: "Узбекский", langNative: "Родной",
+        skillsKicker: "Технологии", skillsTitle: "Знания и навыки", skMobile: "Мобайл", skWeb: "Веб", skAi: "AI & Боты", skTools: "Инструменты",
+        appsKicker: "Главные работы", appsTitle: "Мои мобильные приложения",
+        appsLead: "Два полноценных мобильных приложения, созданных с нуля на Flutter — аптечный e-commerce и система управления ноутбуком с телефона.",
+        app1Sub: "Мобильное аптечное e-commerce приложение",
+        app1Desc: "Полноценное приложение заказа лекарств: каталог, поиск, корзина, оплата, выбор адреса доставки на карте и отслеживание заказов. Чистая архитектура (BLoC), авторизация Firebase и поддержка 3 языков.",
+        app1F1: "Каталог лекарств и умный поиск", app1F2: "Корзина, оплата и история заказов", app1F3: "Адрес доставки на карте", app1F4: "Напоминания о лекарствах и избранное",
+        app1Dl: "Скачать APK",
+        app2Sub: "Управление ноутбуком с телефона",
+        app2Desc: "Приложение для управления ноутбуком с телефона по локальной сети. Безопасное подключение по QR-коду, голосовые команды, напоминания и уведомления. Связь с desktop-агентом (Python) по WebSocket в реальном времени.",
+        app2F1: "Безопасное подключение по QR-коду", app2F2: "Голосовые команды и TTS-ответ", app2F3: "Напоминания и уведомления", app2F4: "Связь по WebSocket в реальном времени",
+        app2More: "Открыть бота",
+        projKicker: "Другие работы", projTitle: "Другие проекты",
+        projCoffee: "Лендинг для современной кофейни — чистый дизайн и плавные анимации.",
+        projAi: "Веб-проект на основе ИИ — интерактивный и умный интерфейс.",
+        projCalc: "Калькулятор в стиле liquid-glass — на чистом JavaScript.",
+        projDjango: "Backend-проект на Python Django — работа с базой данных.",
+        projOpen: "Открыть", projOpen2: "Открыть", projOpen3: "Открыть", projOpen4: "Открыть",
+        botKicker: "Автоматизация", botTitle: "Telegram-боты",
+        botLead: "Боты на Python, обслуживающие реальных пользователей.",
+        bot1Name: "Кириллица ⇄ Латиница", bot1Desc: "Мгновенно конвертирует текст между кириллицей и латиницей. Быстро и точно.",
+        bot2Name: "Бот объяснительных", bot2Desc: "Автоматически готовит официальные объяснительные письма. Сделано в команде.",
+        bot3Name: "Помощник Nex.Ai", bot3Desc: "AI-помощник — общение на узбекском, голос и команды (Groq/Llama).",
+        contactTitle: "Давайте свяжемся", contactLead: "Проект, сотрудничество или просто вопрос — пишите. Я всегда на связи."
+      },
+      en: {
+        pageTitle: "Muhammad Said — Mobile & AI Developer | Portfolio",
+        metaDesc: "Muhammad Said — Flutter mobile apps, Telegram bots and web projects. Tashkent, Uzbekistan.",
+        navAbout: "About", navApps: "Apps", navProjects: "Projects", navBots: "Bots", navContact: "Contact",
+        heroAvail: "Open to projects · Tashkent, Uzbekistan",
+        heroHi: "Hi, I'm", heroRoles: "Mobile & AI developer.",
+        heroSub: "I build mobile apps with Flutter and Telegram bots. 16 years old, passionate about artificial intelligence and automation.",
+        ctaApps: "My mobile apps", ctaApk: "MedCity APK", ctaContact: "Contact me",
+        statApps: "Mobile apps", statBots: "Telegram bots", statAge: "Years old", statLangs: "Languages (UZ/RU/EN)",
+        aboutKicker: "About me", aboutTitle: "Young, but a serious developer",
+        aboutP1: "<strong>16 years old</strong>, from Uzbekistan, Tashkent, Almazar district. Interested in programming and <strong>building mobile apps</strong>, and I love gaining experience in artificial intelligence.",
+        aboutP2: "I really enjoy <strong>Artificial Intelligence (AI)</strong> and automation. Right now I work with <strong>Flutter</strong> mobile apps and Telegram bots — in the future I want to build chatbots and smart systems.",
+        aboutP3: "My goal is to learn something new every day, become a professional developer and gain deep experience in AI.",
+        factLocLbl: "Location", factLocVal: "Tashkent, Uzbekistan", factFocusLbl: "Focus", factFocusVal: "Mobile apps & AI",
+        langEn: "English", langElem: "Elementary", langRu: "Russian", langElem2: "Elementary", langUz: "Uzbek", langNative: "Native",
+        skillsKicker: "Tech stack", skillsTitle: "Skills & expertise", skMobile: "Mobile", skWeb: "Web", skAi: "AI & Bots", skTools: "Tools",
+        appsKicker: "Featured work", appsTitle: "My mobile apps",
+        appsLead: "Two complete mobile apps built from scratch in Flutter — a pharmacy e-commerce app and a phone-to-laptop control system.",
+        app1Sub: "Mobile pharmacy e-commerce app",
+        app1Desc: "A complete medicine-ordering app: catalog, search, cart, checkout, picking the delivery address on a map and tracking orders. Clean architecture (BLoC), Firebase auth and 3-language support.",
+        app1F1: "Medicine catalog & smart search", app1F2: "Cart, checkout & order history", app1F3: "Delivery address on the map", app1F4: "Medicine reminders & favorites",
+        app1Dl: "Download APK",
+        app2Sub: "Control your laptop from your phone",
+        app2Desc: "An app that controls your laptop from your phone over the local network. Secure QR-code pairing, voice commands, reminders and notifications. Real-time WebSocket link with a Python desktop agent.",
+        app2F1: "Secure QR-code pairing", app2F2: "Voice commands & TTS replies", app2F3: "Reminders & notifications", app2F4: "Real-time WebSocket link",
+        app2More: "Open the bot",
+        projKicker: "More work", projTitle: "Other projects",
+        projCoffee: "Landing page for a modern coffee shop — clean design and smooth animations.",
+        projAi: "An AI-powered web project — an interactive and smart interface.",
+        projCalc: "A liquid-glass calculator — written in pure JavaScript.",
+        projDjango: "A backend project in Python Django — working with a database.",
+        projOpen: "Open", projOpen2: "Open", projOpen3: "Open", projOpen4: "Open",
+        botKicker: "Automation", botTitle: "Telegram bots",
+        botLead: "Python bots serving real users.",
+        bot1Name: "Cyrillic ⇄ Latin bot", bot1Desc: "Instantly converts text between the Cyrillic and Latin alphabets. Fast and accurate.",
+        bot2Name: "Explanatory letter bot", bot2Desc: "Automatically prepares official explanatory letters. Built with a team.",
+        bot3Name: "Nex.Ai assistant", bot3Desc: "An AI assistant bot — Uzbek conversation, voice and commands (Groq/Llama).",
+        contactTitle: "Let's connect", contactLead: "A project, a collaboration or just a question — write to me. I'm always available."
+      }
+    };
+
+    var STORAGE_LANG = 'ms_portfolio_lang';
+    var STORAGE_THEME = 'ms_portfolio_theme';
+    var richKeys = { aboutP1:1, aboutP2:1, aboutP3:1 };
+
+    function getSavedLang() {
+      try { var s = localStorage.getItem(STORAGE_LANG); return (s === 'ru' || s === 'en') ? s : 'uz'; } catch (e) { return 'uz'; }
+    }
+    function getSavedTheme() {
+      try { var s = localStorage.getItem(STORAGE_THEME); return s === 'light' ? 'light' : 'dark'; } catch (e) { return 'dark'; }
+    }
+
+    function setLang(lang) {
+      var t = translations[lang] || translations.uz;
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.getAttribute('data-i18n');
+        if (!(key in t)) return;
+        if (key === 'pageTitle') { document.title = t[key]; return; }
+        if (key === 'metaDesc') { el.setAttribute('content', t[key]); return; }
+        if (richKeys[key]) { el.innerHTML = t[key]; } else { el.textContent = t[key]; }
+      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem(STORAGE_LANG, lang); } catch (e) {}
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    function setTheme(theme) {
+      document.body.classList.remove('theme-light', 'theme-dark');
+      document.body.classList.add('theme-' + theme);
+      try { localStorage.setItem(STORAGE_THEME, theme); } catch (e) {}
+      var icon = document.querySelector('#themeToggle i');
+      if (icon) icon.className = theme === 'light' ? 'fa fa-sun' : 'fa fa-moon';
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute('content', theme === 'light' ? '#eef1f8' : '#07060f');
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      setTheme(getSavedTheme());
+      setLang(getSavedLang());
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () { setLang(btn.getAttribute('data-lang')); });
+      });
+      var tt = document.getElementById('themeToggle');
+      if (tt) tt.addEventListener('click', function () {
+        setTheme(document.body.classList.contains('theme-light') ? 'dark' : 'light');
+      });
+
+      /* Reveal on scroll */
+      var reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 });
+        reveals.forEach(function (el, i) { el.style.transitionDelay = (Math.min(i, 4) * 60) + 'ms'; io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('in'); });
+      }
+
+      /* Language bars fill when visible */
+      var bars = document.querySelectorAll('.bar-fill');
+      if ('IntersectionObserver' in window) {
+        var bio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.style.width = e.target.getAttribute('data-w'); bio.unobserve(e.target); }
+          });
+        }, { threshold: 0.5 });
+        bars.forEach(function (b) { bio.observe(b); });
+      } else {
+        bars.forEach(function (b) { b.style.width = b.getAttribute('data-w'); });
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
