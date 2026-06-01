@@ -2,7 +2,7 @@ name: Deploy portfolio
 
 on:
   push:
-    branches: [master, main]
+    branches: [master, main, portfolio-pages]
     paths:
       - 'portfolio/**'
       - '.github/workflows/deploy-portfolio.yml'
