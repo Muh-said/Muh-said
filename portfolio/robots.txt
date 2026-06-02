@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://muh-said.github.io/Muh-said/sitemap.xml
